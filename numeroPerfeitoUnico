@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2162
+# Prove: NumeroPerfeitoUnico
+# Descricao Curta: Verifica se número informado é perfeito
+# Descrição Longa: Verifica se número informado é perfeito
+# Frequencia: Sob demanda
+# Autor: Sérgio Abrantes
+# Contato: sergioabrantes@gmail.com
+# Site: https://github.com/sergioabrantesjunior/numeroPrimoUnico
+#
+#
+# Histórico:
+#
+#    v1.0.0 2020-01-17, Sérgio Abrantes:
+#       - Versão inicial do script
+: '
+Em Matemática, um número perfeito é um número inteiro para o qual a soma de todos os seus divisores positivos próprios (excluindo ele mesmo) é igual ao próprio número.
+
+Por exemplo, o número 6 é um número perfeito, pois:
+
+6 = 1 + 2 + 3
+
+O próximo número perfeito é o 28, pois:
+
+28 = 1+ 2+ 4+ 7+ 14
+
+Os quatro primeiros números perfeitos (6, 28, 496 e 8.128) eram os únicos conhecidos pelos gregos antigos desde pelo menos Euclides. No século XV acrescentou-se 33.550.336 à lista.
+
+ 
+
+O conjunto dos números perfeitos é:
+
+{6, 28, 496, 8128, 33550336, 8589869056, …}
+'
+
+clear
+read -p "Digite um número: " numero
+
+
+
+contadorLoop=1
+somaDivisoresInteiros=0
+while [[ "$contadorLoop" -le "$((numero / 2))" ]];do
+	if [ "$(( numero % contadorLoop ))" = 0 ];then
+		somaDivisoresInteiros=$((somaDivisoresInteiros + contadorLoop))
+	fi	
+	contadorLoop=$((contadorLoop + 1))
+done
+
+if [ "$somaDivisoresInteiros" -eq "$numero" ];then
+	echo "O Número $numero é perfeito"
+else
+	echo "O Número $numero não é perfeito" 
+fi
